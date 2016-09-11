@@ -17,4 +17,13 @@ describe('App', function () {
     it('should have "App" constructor', function () {
         expect(app.constructor.name).toBe('App');
     });
+
+    describe('"setSails" method', function () {
+
+        it('should call "console.info"', function () {
+            spyOn(console, 'info');
+            app.setSails();
+            expect(console.info).toHaveBeenCalled();
+        });
+    });
 });

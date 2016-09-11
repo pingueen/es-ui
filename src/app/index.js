@@ -1,15 +1,29 @@
+var extend = require('extend');
+var Component = require('component');
+
 var template = require('./index.html');
 var style = require('./index.less');
 
-function App () {
-    this.template = document.createElement('div');
-    this.template.innerHTML = template;
-    this.template.classList.add('app');
-    this.style = document.createElement('style');
-    this.style.innerHTML = style;
+/**
+ * Represents an application
+ * @class
+ * @extends Component
+ */
+function App() {
+    this.name = 'app';
+    this.init(template, style);
 
-    document.body.appendChild(this.template);
-    document.head.appendChild(this.style);
+    this.bind('.header-wrapper', require('./header'));
 }
+extend(App, Component);
+
+/**
+ * Notifies pirates that rum will flow a river
+ * @method
+ */
+function setSails() {
+    console.info('A galleon in full sail!');
+}
+App.prototype.setSails = setSails;
 
 module.exports = new App();
