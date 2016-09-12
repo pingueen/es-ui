@@ -1,7 +1,7 @@
-var merge = require('./helpers').merge;
+const webpackMerge = require('webpack-merge');
 var common = require('./webpack.common');
 
-module.exports = merge(common, {
+module.exports = webpackMerge(common, {
     module: {
         preLoaders: [
             {

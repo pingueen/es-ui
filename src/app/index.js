@@ -14,6 +14,7 @@ function App() {
     this.init(template, style);
 
     this.bind('.header-wrapper', require('./header'));
+    this.bind('.content-wrapper', require('./content'));
 }
 extend(App, Component);
 

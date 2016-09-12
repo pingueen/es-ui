@@ -1,3 +1,7 @@
+/**
+ * Represents the component
+ * @constructor
+ */
 function Component() {
 }
 
@@ -17,14 +21,28 @@ function init(template, style) {
 Component.prototype.init = init;
 
 /**
- * Finds element in template by query in param
+ * Returns element from template by query
  * @param {string} selector
- * @returns {Element}
+ * @returns {HTMLElement}
  */
 function querySelector(selector) {
-    return this.template.querySelector(selector);
+    var element = this.template.querySelector(selector);
+    if (!(element instanceof HTMLElement)) throw Error('Can\'t find element by selector ' + selector);
+    return element;
 }
 Component.prototype.querySelector = querySelector;
+
+/**
+ * Returns node list from template by query
+ * @param {string} selector
+ * @returns {NodeList}
+ */
+function querySelectorAll(selector) {
+    var list = this.template.querySelectorAll(selector);
+    if (!(list instanceof NodeList)) throw Error('Can\'t find NodeList by selector ' + selector);
+    return list;
+}
+Component.prototype.querySelectorAll = querySelectorAll;
 
 /**
  * Binds child component to the element by query
@@ -32,7 +50,10 @@ Component.prototype.querySelector = querySelector;
  * @param {Component} component
  */
 function bind(query, component) {
-    this.querySelector(query).appendChild(component.template);
+    var element = this.querySelector(query);
+    if (!element || !(element instanceof HTMLElement)) throw Error('Can\'t find element by query: ' + query);
+    if (!(component instanceof Component)) throw Error(component + ' is not instance of Component');
+    element.appendChild(component.template);
 }
 Component.prototype.bind = bind;
 
