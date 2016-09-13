@@ -84,4 +84,4 @@ function show(element) {
 }
 Content.prototype.show = show;
 
-module.exports = new Content();
+module.exports = Content;

@@ -38,4 +38,4 @@ function selectItem(event) {
 }
 Menu.prototype.selectItem = selectItem;
 
-module.exports = new Menu();
+module.exports = Menu;
