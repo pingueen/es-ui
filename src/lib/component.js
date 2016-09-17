@@ -48,7 +48,7 @@ Component.prototype.querySelector = querySelector;
  */
 function querySelectorAll(selector) {
     var list = this.template.querySelectorAll(selector);
-    if (!(list instanceof NodeList)) throw Error('Can\'t find NodeList by selector ' + selector);
+    if (!list.length) throw Error('Can\'t find elements by selector "' + selector + '"');
     return list;
 }
 Component.prototype.querySelectorAll = querySelectorAll;
@@ -56,11 +56,10 @@ Component.prototype.querySelectorAll = querySelectorAll;
 /**
  * Binds child component to the element by query
  * @param {string} query
- * @param {Component} component
+ * @param {Function} Constructor
  */
 function bind(query, Constructor) {
     var elements = this.querySelectorAll(query);
-    if (!elements.length) throw Error('Can\'t find any element by query: ' + query);
     if (!(constructor instanceof Function)) throw Error(constructor + ' is not a function');
     Array.prototype.forEach.call(elements, function (element) {
         var component = new Constructor();
@@ -86,7 +85,7 @@ Component.prototype.appendTo = appendTo;
 function _determineInstantiation() {
     var component = instantiatedComponents.find(function (component) {
         return component.name === this.name;
-    }.bind(this));
+    }, this);
     return component ? component : false;
 }
 
