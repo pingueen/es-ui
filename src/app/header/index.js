@@ -17,4 +17,4 @@ function Header() {
 }
 extend(Header, Component);
 
-module.exports = new Header();
+module.exports = Header;

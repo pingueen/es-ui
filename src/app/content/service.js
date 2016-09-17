@@ -15,7 +15,7 @@ function ContentService() {
  * @param {Function} setCurrentSection
  */
 function init(setCurrentSection) {
-    if (initialized) throw Error('Unable to initialize menu service twice');
+    if (initialized) console.warn('Initialized ContentService more than once');
     if (typeof setCurrentSection !== 'function') throw Error(setCurrentSection + 'should be a function');
     singleton.setCurrentSection = setCurrentSection;
     initialized = true;

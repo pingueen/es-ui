@@ -1,21 +1,12 @@
 describe('App', function () {
-    var app;
+    var App = require('./index');
 
     beforeEach(function () {
-        app = require('./index');
+        app = new App();
     });
 
     afterEach(function () {
         app = null;
-    });
-
-    it('should be an object', function () {
-        expect(typeof app).toBe('object');
-        expect(app instanceof Object).toBeTruthy();
-    });
-
-    it('should have "App" constructor', function () {
-        expect(app.constructor.name).toBe('App');
     });
 
     describe('"setSails" method', function () {
@@ -23,7 +14,7 @@ describe('App', function () {
         it('should call "console.info"', function () {
             spyOn(console, 'info');
             app.setSails();
-            expect(console.info).toHaveBeenCalled();
+            expect(console.info).toHaveBeenCalledWith('A galleon in full sail!');
         });
     });
 });

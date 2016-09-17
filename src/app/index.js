@@ -27,4 +27,4 @@ function setSails() {
 }
 App.prototype.setSails = setSails;
 
-module.exports = new App();
+module.exports = App;

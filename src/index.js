@@ -29,7 +29,6 @@
  * });
  */
 
-var app = require('./app');
-
+var app = new (require('./app'))();
 app.appendTo(document.body);
 app.setSails();
