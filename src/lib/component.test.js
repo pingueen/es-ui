@@ -31,18 +31,24 @@ describe('Component', function () {
 
     beforeEach(function () {
         component1 = new SomeComponent();
-        component2 = new SomeComponent();
     });
 
     afterEach(function () {
         component1 = null;
-        component2 = null;
     });
 
     describe('method "init"', function () {
 
+        beforeEach(function () {
+            component2 = new SomeComponent();
+        });
+
+        afterEach(function () {
+            component2 = null;
+        });
+
         it('initialises the template', function () {
-            expect(component1.template instanceof HTMLElement).toBeTruthy();
+            expect(component1.template instanceof HTMLDivElement).toBeTruthy();
             expect(component1.template.innerHTML).toBe(template);
         });
 
@@ -52,11 +58,15 @@ describe('Component', function () {
         });
 
         it('should create different template instances', function () {
+            expect(component1.template instanceof HTMLDivElement).toBeTruthy();
+            expect(component2.template instanceof HTMLDivElement).toBeTruthy();
             expect(component1.name).toBe(component2.name);
             expect(component1.template).not.toBe(component2.template);
         });
 
         it('should cache styles of components with same name', function () {
+            expect(component1.style instanceof HTMLStyleElement).toBeTruthy();
+            expect(component2.style instanceof HTMLStyleElement).toBeTruthy();
             expect(component1.name).toBe(component2.name);
             expect(component1.style).toBe(component2.style);
         });
@@ -129,6 +139,7 @@ describe('Component', function () {
         });
 
         it('should throw error if constructor is not a function', function () {
+
             function worngConstructor() {
                 component1.bind('.test', null);
             }
