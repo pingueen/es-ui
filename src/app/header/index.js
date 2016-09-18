@@ -1,3 +1,5 @@
+'use strict';
+
 var extend = require('extend');
 var Component = require('component');
 

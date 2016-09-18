@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * The Monument in Honor of Persistent Junior
  *

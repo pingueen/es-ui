@@ -1,5 +1,8 @@
+'use strict';
+
 describe('App', function () {
-    var App = require('./index');
+    var app, App;
+    App= require('./index');
 
     beforeEach(function () {
         app = new App();

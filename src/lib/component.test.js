@@ -156,6 +156,5 @@ describe('Component', function () {
             componentElement = document.body.querySelector('.' + component1.name);
             expect(componentElement).toBe(component1.template);
         });
-
     });
 });

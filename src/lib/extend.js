@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Extends class without superclass constructor call
  * @param {Function} childClass
